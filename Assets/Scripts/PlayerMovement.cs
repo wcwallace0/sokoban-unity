@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour 
+{
     public float moveSpeed = 5f;
     public Transform target; // Position that the player moves towards
 
@@ -16,10 +17,12 @@ public class PlayerMovement : MonoBehaviour {
     // 3 - West
     public Animator anim;
 
-    private void Update() {
+    private void Update() 
+    {
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, target.position) <= .05f) 
+        // TODO restrict movement (don't allow holding down)
+        if(Vector3.Distance(transform.position, target.position) <= .02f && true) 
         {
             anim.SetBool("isWalking", false);
 
@@ -44,12 +47,15 @@ public class PlayerMovement : MonoBehaviour {
     void CheckMovement(Vector3 moveBy) {
         if(Physics2D.OverlapCircle(target.position + moveBy, 0.2f, moveable)) 
         {
-            Debug.Log("push box");
+            anim.SetTrigger("Push");
+            Collider2D box = Physics2D.OverlapCircle(target.position + moveBy, 0.2f, moveable);
+            box.gameObject.GetComponent<Box>().Push(moveBy); // Tell the box to move in the direction, if possible
         }
         else if(!Physics2D.OverlapCircle(target.position + moveBy, 0.2f, stopsMovement)) 
         {
             target.position += moveBy;
             anim.SetBool("isWalking", true);
+            // TODO play move sfx
         }
     }
 }
