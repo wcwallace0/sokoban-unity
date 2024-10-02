@@ -17,28 +17,37 @@ public class PlayerMovement : MonoBehaviour
     // 3 - West
     public Animator anim;
 
+    private Vector2 previousInput = new Vector2(0f, 0f);
+
     private void Update() 
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-        // TODO restrict movement (don't allow holding down)
-        if(Vector3.Distance(transform.position, target.position) <= .02f && true) 
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        if(Vector3.Distance(transform.position, target.position) <= .02f)
         {
             anim.SetBool("isWalking", false);
 
-            if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) 
+            if(previousInput == Vector2.zero)
             {
-                Vector3 moveBy = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-                anim.SetFloat("Facing", -1 * moveBy.x + 2);
-                CheckMovement(moveBy);
-            } 
-            else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) 
-            {
-                Vector3 moveBy = new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                anim.SetFloat("Facing", -1 * moveBy.y + 1);
-                CheckMovement(moveBy);
+                if(Mathf.Abs(horizontal) == 1f) 
+                {
+                    Vector3 moveBy = new Vector3(horizontal, 0f, 0f);
+                    anim.SetFloat("Facing", -1 * moveBy.x + 2);
+                    CheckMovement(moveBy);
+                } 
+                else if(Mathf.Abs(vertical) == 1f) 
+                {
+                    Vector3 moveBy = new Vector3(0f, vertical, 0f);
+                    anim.SetFloat("Facing", -1 * moveBy.y + 1);
+                    CheckMovement(moveBy);
+                }
             }
         }
+
+        previousInput = new Vector2(horizontal, vertical);
     }
 
     // Given a Vector3 indicating where the player wishes to move,
