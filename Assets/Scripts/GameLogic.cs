@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Button[] buttons;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void CheckWin() {
+        foreach(Button button in buttons) {
+            if(!button.pressed) {
+                return;
+            }
+        }
+
+        // All buttons are pressed, win condition is passed
+        // TODO
+        Debug.Log("WIN");
     }
 }
