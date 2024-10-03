@@ -6,10 +6,6 @@ public class Button : MonoBehaviour
 {
     public bool pressed;
     public GameLogic gl;
-
-    private void Start() {
-        gl.CheckWin();
-    }
     
     private void OnTriggerEnter2D(Collider2D other) {
         pressed = true;

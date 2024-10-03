@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 previousInput = new Vector2(0f, 0f);
 
+    private void Start() {
+        target.parent = null;
+    }
+
     private void Update() 
     {
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
