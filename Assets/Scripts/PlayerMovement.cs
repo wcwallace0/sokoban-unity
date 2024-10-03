@@ -17,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     // 3 - West
     public Animator anim;
 
+    public AudioSource audioSource;
+    public AudioClip moveSFX;
+    public AudioClip dieSFX;
+    public AudioClip thunkSFX;
+
     private Vector2 previousInput = new Vector2(0f, 0f);
 
     private void Start() {
@@ -68,7 +73,15 @@ public class PlayerMovement : MonoBehaviour
         {
             target.position += moveBy;
             anim.SetBool("isWalking", true);
-            // TODO play move sfx
+            // play move sfx
+            audioSource.clip = moveSFX;
+            audioSource.Play();
+        }
+        else
+        {
+            // moving into a wall
+            audioSource.clip = thunkSFX;
+            audioSource.Play();
         }
     }
 }

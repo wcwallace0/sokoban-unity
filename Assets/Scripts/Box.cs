@@ -8,6 +8,11 @@ public class Box : MonoBehaviour
     public LayerMask moveable;
     public bool isFragile;
 
+    public AudioSource audioSource;
+    public AudioClip potSFX;
+    public AudioClip pushSFX;
+    public AudioClip thunkSFX;
+
     public void Push(Vector3 moveBy) 
     {
         // stores the collider2D for another box if this box will collide with it when pushed
@@ -16,14 +21,18 @@ public class Box : MonoBehaviour
         if(!Physics2D.OverlapCircle(transform.position + moveBy, 0.2f, stopsMovement) && !other) 
         {
             transform.position += moveBy;
-            // TODO play move sfx
+            // play move sfx
+            audioSource.clip = pushSFX;
+            audioSource.Play();
         }
         else
         {
             if (other && other.gameObject.GetComponent<Box>().isFragile)
             {
                 // Pushing box into fragile box, we want to break it
-                // TODO break pot sfx
+                // break pot sfx
+                audioSource.clip = potSFX;
+                audioSource.Play();
                 Destroy(other.gameObject);
                 if(isFragile) {
                     Destroy(gameObject);
@@ -33,12 +42,16 @@ public class Box : MonoBehaviour
             }
             else if(isFragile)
             {
-                // TODO break pot sfx
+                // break pot sfx
+                audioSource.clip = potSFX;
+                audioSource.Play();
                 Destroy(gameObject);
             }
             else
             {
-                // TODO play thunk sound effect
+                // play thunk sound effect
+                audioSource.clip = thunkSFX;
+                audioSource.Play();
             }
         }
     }

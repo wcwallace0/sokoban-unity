@@ -150,3 +150,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isFragile: 0
+  audioSource: {fileID: 0}
+  potSFX: {fileID: 8300000, guid: f1b1e592b1ed54247a2aa6dc6d7e8b5f, type: 3}
+  pushSFX: {fileID: 8300000, guid: a52f2731ac1e4da4da7f6e0606f21636, type: 3}
+  thunkSFX: {fileID: 8300000, guid: ba01a953597943d4a82f1b7854eb9ef1, type: 3}
