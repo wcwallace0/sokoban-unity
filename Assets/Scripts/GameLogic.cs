@@ -27,7 +27,9 @@ public class GameLogic : MonoBehaviour
         foreach(Button button in buttons) {
             if(!button.pressed) {
                 won = false;
-                winLock.SetActive(true);
+                if(winLock) {
+                    winLock.SetActive(true);
+                }
                 return;
             }
         }
