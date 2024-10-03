@@ -40,7 +40,6 @@ public class GameLogic : MonoBehaviour
 
     // Player enters the win area (behind lock)
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(level+1);
         SceneManager.LoadScene(level+1);
     }
 }
