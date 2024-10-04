@@ -5811,6 +5811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608857327954738461, guid: 384e1655bc86172468580d8b3c28b42c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 432aede89883ed34fab88d5105478cfa, type: 3}
     - target: {fileID: 3241214164034777842, guid: 384e1655bc86172468580d8b3c28b42c, type: 3}
       propertyPath: m_Name
       value: MusicSource

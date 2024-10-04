@@ -11,6 +11,10 @@ public class GameLogic : MonoBehaviour
     private string levelName;
     private int level;
 
+    public Skeleton[] skeletons;
+    public AudioSource audioSource;
+    public AudioClip dieSFX;
+
     private void Start() {
         levelName = SceneManager.GetActiveScene().name;
         level = (int) char.GetNumericValue(levelName[^1]);
@@ -18,9 +22,25 @@ public class GameLogic : MonoBehaviour
 
     private void Update() {
         if(!won && Input.GetKeyDown(KeyCode.R)) {
-            // Reload Scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            RestartLevel();
         }
+    }
+
+    private void RestartLevel() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void KillPlayer(GameObject player) {
+        StartCoroutine(KillPlayerCoroutine(player));
+    }
+
+    private IEnumerator KillPlayerCoroutine(GameObject player) {
+        audioSource.clip = dieSFX;
+        audioSource.Play();
+        Destroy(player);
+
+        yield return new WaitForSeconds(2f);
+        RestartLevel();
     }
 
     public void CheckWin() {
@@ -43,5 +63,11 @@ public class GameLogic : MonoBehaviour
     // Player enters the win area (behind lock)
     private void OnTriggerEnter2D(Collider2D other) {
         SceneManager.LoadScene(level+1);
+    }
+
+    public void MoveSkeletons() {
+        foreach(Skeleton skele in skeletons) {
+            skele.Move();
+        }
     }
 }

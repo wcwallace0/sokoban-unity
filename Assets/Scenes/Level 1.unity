@@ -1616,6 +1616,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2652537370204223603, guid: dfa36f818da727c47ae7875a91aa5b8f, type: 3}
+      propertyPath: gl
+      value: 
+      objectReference: {fileID: 2069174222}
+    - target: {fileID: 2652537370204223603, guid: dfa36f818da727c47ae7875a91aa5b8f, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1279422764}
@@ -2391,6 +2395,10 @@ PrefabInstance:
       propertyPath: winLock
       value: 
       objectReference: {fileID: 300555864}
+    - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
+      propertyPath: skeletons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
       propertyPath: buttons.Array.data[0]
       value: 

@@ -774,6 +774,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2652537370204223603, guid: dfa36f818da727c47ae7875a91aa5b8f, type: 3}
+      propertyPath: gl
+      value: 
+      objectReference: {fileID: 2069174220}
+    - target: {fileID: 2652537370204223603, guid: dfa36f818da727c47ae7875a91aa5b8f, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 365027703}
@@ -2294,6 +2298,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
+      propertyPath: skeletons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
       propertyPath: buttons.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -2314,6 +2322,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
+--- !u!114 &2069174220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
+  m_PrefabInstance: {fileID: 2069174219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76bf793b61a4df42981b7fcc6a33a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141466257
 GameObject:
   m_ObjectHideFlags: 0

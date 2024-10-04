@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip moveSFX;
-    public AudioClip dieSFX;
     public AudioClip thunkSFX;
+
+    public GameLogic gl;
 
     private Vector2 previousInput = new Vector2(0f, 0f);
 
@@ -76,12 +77,22 @@ public class PlayerMovement : MonoBehaviour
             // play move sfx
             audioSource.clip = moveSFX;
             audioSource.Play();
+
+            // Move all skeletons
+            gl.MoveSkeletons();
         }
         else
         {
             // moving into a wall
             audioSource.clip = thunkSFX;
             audioSource.Play();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Skeleton")) {
+            // Kill player
+            gl.KillPlayer(gameObject);
         }
     }
 }

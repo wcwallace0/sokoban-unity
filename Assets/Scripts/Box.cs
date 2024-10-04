@@ -30,10 +30,8 @@ public class Box : MonoBehaviour
             if (other && other.gameObject.GetComponent<Box>().isFragile)
             {
                 // Pushing box into fragile box, we want to break it
-                // break pot sfx
-                audioSource.clip = potSFX;
-                audioSource.Play();
-                Destroy(other.gameObject);
+                Break(other.gameObject);
+
                 if(isFragile) {
                     Destroy(gameObject);
                 } else {
@@ -42,10 +40,8 @@ public class Box : MonoBehaviour
             }
             else if(isFragile)
             {
-                // break pot sfx
-                audioSource.clip = potSFX;
-                audioSource.Play();
-                Destroy(gameObject);
+                // break pot
+                Break(gameObject);
             }
             else
             {
@@ -54,5 +50,11 @@ public class Box : MonoBehaviour
                 audioSource.Play();
             }
         }
+    }
+
+    public void Break(GameObject pot) {
+        audioSource.clip = potSFX;
+        audioSource.Play();
+        Destroy(pot);
     }
 }
