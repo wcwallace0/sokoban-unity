@@ -3087,6 +3087,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300555864}
     - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 365027703}
+    - target: {fileID: 6679569595166609651, guid: c2c8d3826bc6c484382f1fe6e7a50714, type: 3}
       propertyPath: buttons.Array.size
       value: 2
       objectReference: {fileID: 0}
