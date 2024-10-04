@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if(Vector3.Distance(transform.position, target.position) <= .02f)
+        if(Vector3.Distance(transform.position, target.position) <= .05f)
         {
             anim.SetBool("isWalking", false);
 
